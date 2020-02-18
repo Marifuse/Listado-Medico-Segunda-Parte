@@ -1,0 +1,15 @@
+Link Repositorio GITHUB
+
+https://github.com/Marifuse/Listado-Medico-Segunda-Parte
+
+
+Algunas Consideraciones:
+
+- Logré trabajar tanto con document.getElementById y document.write ya que en el desafío no específicaba realmente que 
+se utilizara solamente una opción.
+
+- Dejé el trabajo como plantilla de word (no pide que se haga diseños elavorados).
+
+- En la sección "TOTAL DE PACIENTES QUE SE ATIENDEN EN LA CLÍNICA", en la parte de RADIOLOGÍA salen 3 pacientes puesto 
+que en la segunda función "Eliminar al primer y último paciente de Radiología", elimina al primer y último paciente de
+esa área.

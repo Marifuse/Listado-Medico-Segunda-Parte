@@ -205,7 +205,7 @@ document.getElementById('latestDental').innerHTML = (denUlt.paciente + ' - ' + d
 // Segunda Parte
 
 // Agregar pacientes a Traumatología
-var traumatologiaAux = traumatologia;
+var traumatologiaAux = traumatologia.slice();
 
 traumatologiaAux.push({hora: '9:00', especialista: 'René Poblete', paciente: 'Ana Gellona', rut: '13123329-7', prevision: 'Isapre'},
 {hora: '9:30', especialista: 'María Solar', paciente: 'Ramiro Andrade', rut: '12221451-K', prevision: 'Fonasa'}, {hora: '10:00',
@@ -216,7 +216,7 @@ rut: '14345656-6', prevision: 'Fonasa'});
 
 
 // Eliminar al primer y último paciente de Radiología
-var radiologiaAux = radiologia;
+var radiologiaAux = radiologia.slice();
 
 radiologiaAux.pop();
 
@@ -225,13 +225,12 @@ radiologiaAux.shift();
 
 
 // Mostrar el listado completo de pacientes de Dental
-var dentalAux = dental;
-
+var dentalAux = dental.slice();
+var titulo = document.write(' <br> ' + '<h1>Pacientes de Dental</h1>');
 var consultas =[];
 
 dentalAux.forEach(consulta => {
    consultas.push(consulta.hora,consulta.especialista,consulta.paciente,consulta.rut,consulta.prevision);
-   // document.getElementById('dentPatient').innerHTML = ("<p>" + consultas.join(' - ') + "</p>");
    document.write("<p>" + consultas.join(' - ') + "</p>");
    consultas = [];
 });
@@ -241,6 +240,7 @@ dentalAux.forEach(consulta => {
 var pacientes = [];
 var titulo = document.write(' <br> ' + '<h1>Total de Pacientes que se atienden en la Clínica</h1>');
 
+var subTitulo = document.write('<h1>Radiología</h1>');
 radiologiaAux.forEach(pacienteRadio => {
   pacientes.push(pacienteRadio.paciente);
   // console.log(pacientes);
@@ -248,7 +248,7 @@ radiologiaAux.forEach(pacienteRadio => {
   pacientes = [];
 });
 
-
+var subTitulo = document.write(' <br> ' + '<h1>Traumatología</h1>');
 traumatologiaAux.forEach(pacienteTrauma => {
   pacientes.push(pacienteTrauma.paciente);
   // console.log(pacientes);
@@ -256,7 +256,7 @@ traumatologiaAux.forEach(pacienteTrauma => {
   pacientes = [];
 });
 
-
+var subTitulo = document.write(' <br> ' + '<h1>Dental</h1>');
 dentalAux.forEach(pacienteDent => {
   pacientes.push(pacienteDent.paciente);
   // console.log(pacientes);
@@ -265,7 +265,25 @@ dentalAux.forEach(pacienteDent => {
 });
 
 
-
 // Mostrar primero la previsión y luego en nombre del paciente de la sección dental
+// Podría ser un for que encapsule un if - else para llamar a la previsión fonasa e isapre (y estaba correcta)
+var dentalModificado = dental.map(d => {
+  if(d.prevision === 'Fonasa') {
+    d.prevision = 'Isapre'
+  }
+  else {
+    d.prevision = 'Fonasa'
+  };
+  return d;
+});
+// console.log(dentalModificado);
 
-// Podría ser un for que encapsule un if - else para llamar a la previsión fonasa e isapre
+
+ // Mostrar la modificación de la función anterior agregando rut y paciente
+ var titulo = document.write(' <br> ' + '<h1>Pacientes de Dental modificado</h1>');
+
+dentalModificado.forEach(rutPrev => {
+  pacientes.push(rutPrev.rut, rutPrev.prevision, rutPrev.paciente);
+  document.write('<p>' + pacientes.join('; ') + '</p>');
+  pacientes = [];
+})

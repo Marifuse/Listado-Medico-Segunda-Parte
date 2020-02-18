@@ -133,17 +133,24 @@ var dental = [
   },
 ];
 
+
 // Función para llamar al total de pacientes de Radiología
 
-document.write('Total de Pacientes de Radiología' + ' <br> ' + radiologia.length + ' <br> ' + ' <br> ');
+document.getElementById('pacientesRadiologia').innerHTML = radiologia.length;
+// document.write('Total de Pacientes de Radiología' + ' <br> ' + radiologia.length + ' <br> ' + ' <br> ');
+
 
 // Función para llamar al total de pacientes de Traumatología
 
-document.write('Total de Pacientes de Traumatología' + ' <br> '+ traumatologia.length + ' <br> ' + ' <br> ');
+document.getElementById('pacientesTraumatologia').innerHTML = traumatologia.length;
+// document.write('Total de Pacientes de Traumatología' + ' <br> '+ traumatologia.length + ' <br> ' + ' <br> ');
+
 
 // Función para llamar al total de pacientes de dental
 
-document.write('Total de Pacientes de Dental' + ' <br> '+ dental.length + ' <br> ' + ' <br> ' + ' <br> ');
+document.getElementById('pacientesDental').innerHTML = dental.length;
+// document.write('Total de Pacientes de Dental' + ' <br> '+ dental.length + ' <br> ' + ' <br> ' + ' <br> ');
+
 
 
 // Función para llamar pacientes, rut, y previsión de Radiología
@@ -153,9 +160,13 @@ var longitudUno = radiologia.length;
 var radPri = radiologia[0];
 var radUlt = radiologia[radiologia.length-1];
 
-document.write('Primer y Último Paciente de Radiología' + ' <br> ' + ' <br> ' + radPri.paciente + ' - ' +
-radPri.rut + ' - ' + radPri.prevision + ' <br> ' + radUlt.paciente + ' - ' + radUlt.rut +' - ' + radUlt.prevision +
-' <br> ' + ' <br> ' + ' <br> ');
+document.getElementById('firstRadiology').innerHTML = (radPri.paciente + ' - ' + radPri.rut + ' - ' + radPri.prevision);
+
+document.getElementById('latestRadiology').innerHTML = (radUlt.paciente + ' - ' + radUlt.rut +' - ' + radUlt.prevision);
+
+// document.write('Primer y Último Paciente de Radiología' + ' <br> ' + ' <br> ' + radPri.paciente + ' - ' +
+// radPri.rut + ' - ' + radPri.prevision + ' <br> ' + radUlt.paciente + ' - ' + radUlt.rut +' - ' + radUlt.prevision +
+// ' <br> ' + ' <br> ' + ' <br> ');
 
 
 // Función para llamar pacientes, rut, y previsión de Traumatología
@@ -165,9 +176,13 @@ var longitudDos = traumatologia.length;
 var traPri = traumatologia[0];
 var traUlt = traumatologia[traumatologia.length-1];
 
-document.write('Primer y Último Paciente de Traumatología' + ' <br> ' + ' <br> ' + traPri.paciente + ' - ' +
-traPri.rut + ' - ' + traPri.prevision + ' <br> ' + traUlt.paciente + ' - ' + traUlt.rut + ' - ' + traUlt.prevision +
-' <br> ' + ' <br> ' + ' <br> ');
+document.getElementById('firstTraumatology').innerHTML = (traPri.paciente + ' - ' + traPri.rut + ' - ' + traPri.prevision);
+
+document.getElementById('latestTraumatology').innerHTML = (traUlt.paciente + ' - ' + traUlt.rut + ' - ' + traUlt.prevision);
+
+// document.write('Primer y Último Paciente de Traumatología' + ' <br> ' + ' <br> ' + traPri.paciente + ' - ' +
+// traPri.rut + ' - ' + traPri.prevision + ' <br> ' + traUlt.paciente + ' - ' + traUlt.rut + ' - ' + traUlt.prevision +
+// ' <br> ' + ' <br> ' + ' <br> ');
 
 
 // Función para llamar pacientes, rut, y previsión de Traumatología
@@ -177,9 +192,15 @@ var longitudDos = dental.length;
 var denPri = dental[0];
 var denUlt = dental[dental.length-1];
 
-document.write('Primer y Último Paciente de Dental' + ' <br> ' + ' <br> ' + denPri.paciente + ' - ' +
-denPri.rut + ' - ' + denPri.prevision + ' <br> ' + denUlt.paciente + ' - ' + denUlt.rut + ' - ' + denUlt.prevision + ' <br> ' + ' <br> ' +
-' <br> ');
+document.getElementById('firstDental').innerHTML = (denPri.paciente + ' - ' + denPri.rut + ' - ' + denPri.prevision);
+
+document.getElementById('latestDental').innerHTML = (denUlt.paciente + ' - ' + denUlt.rut + ' - ' + denUlt.prevision + ' <br> ' + ' <br> ');
+
+// document.write('Primer y Último Paciente de Dental' + ' <br> ' + ' <br> ' + denPri.paciente + ' - ' +
+// denPri.rut + ' - ' + denPri.prevision + ' <br> ' + denUlt.paciente + ' - ' + denUlt.rut + ' - ' + denUlt.prevision + ' <br> ' + ' <br> ' +
+// ' <br> ');
+
+
 
 // Segunda Parte
 
@@ -206,18 +227,45 @@ radiologiaAux.shift();
 // Mostrar el listado completo de pacientes de Dental
 var dentalAux = dental;
 
-var consultas =[] ;
+var consultas =[];
 
 dentalAux.forEach(consulta => {
    consultas.push(consulta.hora,consulta.especialista,consulta.paciente,consulta.rut,consulta.prevision);
+   // document.getElementById('dentPatient').innerHTML = ("<p>" + consultas.join(' - ') + "</p>");
    document.write("<p>" + consultas.join(' - ') + "</p>");
    consultas = [];
 });
 
 
 // Mostrar la cantidad de pacientes que se atienden en la Clínica
+var pacientes = [];
+var titulo = document.write(' <br> ' + '<h1>Total de Pacientes que se atienden en la Clínica</h1>');
 
+radiologiaAux.forEach(pacienteRadio => {
+  pacientes.push(pacienteRadio.paciente);
+  // console.log(pacientes);
+  document.write("<p>" + pacientes + "</p>");
+  pacientes = [];
+});
+
+
+traumatologiaAux.forEach(pacienteTrauma => {
+  pacientes.push(pacienteTrauma.paciente);
+  // console.log(pacientes);
+  document.write("<p>" + pacientes + "</p>");
+  pacientes = [];
+});
+
+
+dentalAux.forEach(pacienteDent => {
+  pacientes.push(pacienteDent.paciente);
+  // console.log(pacientes);
+  document.write("<p>" + pacientes + "</p>");
+  pacientes = [];
+});
 
 
 
 // Mostrar primero la previsión y luego en nombre del paciente de la sección dental
+
+// Podría ser un for que encapsule un if - else para llamar a la previsión fonasa e isapre
